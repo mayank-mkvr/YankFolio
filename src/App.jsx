@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+
+import { Navbar, Welcome, Dock } from "#components";
+
+
+const App = () => {
+    return(
+        <main>
+            <Navbar />
+            <Welcome />
+            <Dock />
+        </main>
+    );
+};
+=======
 import dayjs from "dayjs";
 import { navIcons,navLinks } from '#constants';
 
@@ -33,4 +48,5 @@ const App = () => {
   );
 };
 
+>>>>>>> 658faa71005039f9d65f7cd38a7ad497482c2517
 export default App;
