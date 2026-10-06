@@ -1,51 +1,14 @@
-import dayjs from "dayjs";
-import { navIcons, navLinks } from "#constants";
-import { Navbar, Welcome } from "#components";
+
+import { Navbar, Welcome, Dock } from "#components";
+
 
 const App = () => {
-    return (
+    return(
         <main>
-            <Navbar>
-                <nav>
-                    <div>
-                        <img src="/images/logo.svg" alt="logo" />
-
-                        <p className="font-bold">
-                            IITianYank's Portfolio
-                        </p>
-
-                        <ul>
-                            {navLinks.map(({ id, name }) => (
-                                <li key={id}>
-                                    <p>{name}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <ul>
-                            {navIcons.map(({ id, img }) => (
-                                <li key={id}>
-                                    <img
-                                        src={img}
-                                        className="icon"
-                                        alt={`icon-${id}`}
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-
-                        <time>
-                            {dayjs().format("ddd MMM D h:mm A")}
-                        </time>
-                    </div>
-                </nav>
-            </Navbar>
-
+            <Navbar />
             <Welcome />
+            <Dock />
         </main>
     );
 };
-
 export default App;

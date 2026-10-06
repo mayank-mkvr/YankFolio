@@ -1,12 +1,5 @@
-export { default as Navbar } from "./Navbar";
-export { default as Welcome } from "./Welcome";
+import Navbar from "#components/Navbar.jsx";
+import Welcome from "#components/Welcome.jsx";
+import Dock from "#components/Dock.jsx";
 
-const App = () => {
-    return(
-        <main>
-            <Navbar />
-            <Welcome />
-        </main>
-    );
-};
-export { App };
+export {Navbar,Welcome,Dock};

@@ -2,6 +2,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(useGSAP);
+
 const FONT_WEIGHTS = {
     subtitle: {
         min: 100,
@@ -21,7 +23,7 @@ const renderText = (text, className, baseWeight = 400) => {
             key={i}
             className={className}
             style={{
-                fontVariationSettings: `'wgt' ${baseWeight}`,
+                fontVariationSettings: `'wght' ${baseWeight}`,
             }}
         >
       {char === " " ? "\u00A0" : char}
@@ -33,13 +35,17 @@ const setupTextHover = (container, type) => {
     if (!container) return;
 
     const letters = container.querySelectorAll("span");
-    const { min, max } = FONT_WEIGHTS[type];
+    const { min, max, default: base } = FONT_WEIGHTS[type];
 
-    const animateLetter = (letter, weight, duration = 0.25) => {
+    const animateLetter = (
+        letter,
+        weight,
+        duration = 0.25
+    ) => {
         return gsap.to(letter, {
             duration,
             ease: "power2.out",
-            fontVariationSettings: `'wgt' ${weight}`,
+            fontVariationSettings: `'wght' ${weight}`,
         });
     };
 
@@ -55,7 +61,9 @@ const setupTextHover = (container, type) => {
                 mouseX - (l - left + w / 2)
             );
 
-            const intensity = Math.exp(-(distance ** 2) / 20000);
+            const intensity = Math.exp(
+                -(distance ** 2) / 20000
+            );
 
             animateLetter(
                 letter,
@@ -63,21 +71,35 @@ const setupTextHover = (container, type) => {
             );
         });
     };
-    const handleMouseLeave = (e) => letters.forEach((letter) =>
-    animateLetter(letter, base, 0.3));
 
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    const handleMouseLeave = () => {
+        letters.forEach((letter) => {
+            animateLetter(letter, base, 0.3);
+        });
+    };
+
+    container.addEventListener(
+        "mousemove",
+        handleMouseMove
+    );
+
+    container.addEventListener(
+        "mouseleave",
+        handleMouseLeave
+    );
 
     return () => {
         container.removeEventListener(
             "mousemove",
             handleMouseMove
         );
+
         container.removeEventListener(
             "mouseleave",
             handleMouseLeave
         );
+
+        gsap.killTweensOf(letters);
     };
 };
 
@@ -97,8 +119,8 @@ const Welcome = () => {
         );
 
         return () => {
-            titleCleanup();
-            subtitleCleanup();
+            titleCleanup?.();
+            subtitleCleanup?.();
         };
     }, []);
 
@@ -118,7 +140,8 @@ const Welcome = () => {
             >
                 {renderText(
                     "portfolio",
-                    "text-9xl italic font-georama"
+                    "text-9xl italic font-georama",
+                    400
                 )}
             </h1>
 
