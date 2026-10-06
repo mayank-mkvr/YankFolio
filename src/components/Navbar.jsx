@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import dayjs from "dayjs";
 import { navIcons, navLinks } from "#constants";
 
@@ -42,3 +43,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+=======
+const Navbar = () => {
+    return <div>Navbar</div>;
+}
+>>>>>>> 658faa71005039f9d65f7cd38a7ad497482c2517

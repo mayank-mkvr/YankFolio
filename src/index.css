@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 
 @import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
+=======
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+>>>>>>> 658faa71005039f9d65f7cd38a7ad497482c2517
 
 html,
 body {
@@ -82,6 +88,7 @@ body {
         @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
 
         .dock-container {
+<<<<<<< HEAD
             @apply flex items-end gap-1.5 w-fit h-fit
             bg-white/20 backdrop-blur-md
             rounded-2xl p-1.5;
@@ -99,6 +106,20 @@ body {
 
             img {
                 @apply block w-full h-full object-contain object-center;
+=======
+            @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
+        }
+
+        .tooltip {
+            @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-blue-200 !text-blue-900 !shadow-2xl;
+        }
+
+        .dock-icon {
+            @apply size-14 3xl:size-20 cursor-pointer;
+
+            img {
+                @apply object-cover object-center;
+>>>>>>> 658faa71005039f9d65f7cd38a7ad497482c2517
             }
         }
     }
